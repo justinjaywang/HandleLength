@@ -54,15 +54,16 @@ class MeasureHandles(object):
     radius = 0.3
 
     font_size = 9
-    font = "Lucida Grande Bold"
+    font_bold = "SF Pro Text Bold"
+    font_regular = "SF Pro Text Regular"
 
     stroke_width = 1
 
-    color_angle = 1, 0, 0
-    color_box = 1, 0, 0
-    color_handle = 1, 0, 0
+    color_angle = 0.6, 0.6, 0.6
+    color_box = 0.6, 0.6, 0.6
+    color_handle = 0, 0, 0
 
-    stroke_alpha = 0.65
+    stroke_alpha = 0.5
     stroke_dash = 2
 
     def __init__(self, glyph):
@@ -87,7 +88,6 @@ class MeasureHandles(object):
             # setup drawing
             save()
             fontSize(self.font_size * scale)
-            font(self.font)
 
             # draw!
             for contour in self.glyph:
@@ -109,6 +109,9 @@ class MeasureHandles(object):
             restore()
 
     def _draw_handles(self, bPoint, scale):
+
+        # set font
+        font(self.font_bold)
 
         # get positions
         x0, y0, w1, h1, w2, h2, x1, y1, x2, y2 = self._get_positions(bPoint)
@@ -165,6 +168,9 @@ class MeasureHandles(object):
         restore()
 
     def _draw_box(self, bPoint, scale):
+
+        # set font
+        font(self.font_regular)
 
         # get positions
         x0, y0, w1, h1, w2, h2, x1, y1, x2, y2 = self._get_positions(bPoint)
@@ -233,6 +239,9 @@ class MeasureHandles(object):
         restore()
 
     def _draw_angles(self, bPoint, scale):
+
+        # set font
+        font(self.font_regular)
 
         f = BEZIER_ARC_CIRCLE
 
